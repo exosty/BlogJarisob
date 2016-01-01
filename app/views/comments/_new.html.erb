@@ -1,0 +1,22 @@
+
+<% if user_signed_in? %>
+    <h4>Add comment:</h4>
+    <%= form_for [@post, @post.comments.build], remote: true do |f| %>
+        <% if @post.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@post.errors.count, "error") %> prohibited this comment from being saved:</h2>
+              <ul>
+                <% @post.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+        <div class="field" id="new_comment">
+          <%= f.text_area :body, size: "100x4" %>
+        </div>
+        <div class="actions">
+          <%= f.submit 'Say', class: "btn btn-success btn-default" %>
+        </div>
+    <% end %>
+<% end %>

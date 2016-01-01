@@ -1,0 +1,35 @@
+<div align="center">
+  <h3>Listing posts:</h3>
+  <br>
+  <% @posts.each do |post| %>
+
+      <div id="post_<%= post.id %>">
+
+        <b><%= post.title %></b> posted <%= time_ago_in_words(post.created_at) %> ago
+
+        <br>
+
+        <%= post.get_likes.size %>
+        <%=image_tag("heart.png", size: "30x30")%>
+        <%= link_to 'Show', post, class: "btn btn-info btn-xs" %>
+
+        <% if user_signed_in? %>
+
+            <% if can? :update, post %>
+                <%= link_to 'Edit', edit_post_path(post), class: "btn btn-success btn-xs" %>
+            <% end %>
+
+            <% if can? :destroy, post %>
+                <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs",
+                            remote: true %>
+            <% end %>
+
+        <% end %>
+
+      </div>
+
+      <br>
+
+  <% end %>
+
+</div>

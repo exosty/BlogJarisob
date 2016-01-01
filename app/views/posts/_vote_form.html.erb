@@ -1,0 +1,13 @@
+<%= @post.get_likes.size %>
+<%=image_tag("heart.png", size: "30x30")%>
+<% if user_signed_in? %>
+    <% if current_user.liked? @post %>
+        <span id="unlike">
+            <%= link_to image_tag("thumbs-down.png", size: "25x25"), unlike_post_path(@post), method: :put, remote: true %>
+        </span>
+    <% else %>
+        <span id="like">
+            <%= link_to image_tag("thumbs-up.png", size: "25x25"), like_post_path(@post), method: :put, remote: true %>
+        </span>
+    <% end %>
+<% end %>

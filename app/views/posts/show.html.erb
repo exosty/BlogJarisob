@@ -1,0 +1,38 @@
+<div align="center">
+  <p>
+  <h2><%= @post.title %></h2>
+  </p>
+
+  <div>
+    <%= @post.body %>
+  </div>
+
+  <span id="vote">
+    <%= render 'posts/vote_form' %>
+  </span>
+
+
+  <br>
+
+  <% if user_signed_in? %>
+      <% if can? :update, Post %>
+          <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-success btn-xs" %>
+      <% end %>
+
+      <% if can? :destroy, Post %>
+          <%= link_to 'Delete', post_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
+      <% end %>
+
+  <% end %>
+
+  <div id="comments">
+    <%= render 'comments/index' %>
+  </div>
+
+  <br>
+
+  <div>
+    <%= render 'comments/new' %>
+  </div>
+
+</div>

@@ -1,0 +1,3 @@
+$("#unlike").fadeOut(500, function(){
+  $('#vote').html('<%= escape_javascript(render('posts/vote_form')) %>');
+});
