@@ -1,0 +1,15 @@
+<div align="center">
+<h3> Listing all tags: </h3>
+<% @tags.each do |tag| %>
+  <div id="tag_<%= tag.id %>">
+    <b><%= link_to tag.name, tag_path(tag) %></b>
+    <% if user_signed_in? %>
+        <% if can? :destroy, tag %>
+            <%= link_to 'Delete', tag, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs",
+                        remote: true %>
+        <% end %>
+    <% end %>
+    <br>
+  </div>
+<% end %>
+</div>

@@ -2,6 +2,11 @@
   <p>
   <h2><%= @post.title %></h2>
   </p>
+  <p>
+  <% @post.tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag) %>
+  <% end %>
+  </p>
 
   <div>
     <%= @post.body %>

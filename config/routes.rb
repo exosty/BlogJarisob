@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   devise_for :users
+  resources :tags
   resources :posts do
     resources :comments
     member do

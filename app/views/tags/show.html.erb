@@ -1,0 +1,10 @@
+<div align="center">
+
+<h3> Listing posts tagged with <%= @tag.name %>: </h3>
+  <% @tag.posts.each do |post| %>
+  <div>
+    <b><%= link_to post.title, post_path(post) %></b>
+  </div>
+  <br>
+  <% end %>
+</div>
