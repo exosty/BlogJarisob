@@ -2,7 +2,12 @@
   <h3>Listing posts:</h3>
   <br>
   <% @posts.each do |post| %>
-      <div id="post_<%= post.id %>">
+      <div id="post_<%= post.id %>" >
+        <% if post.image.exists? %>
+          <div >
+            <%= image_tag post.image.url(:thumb), class: "img-rounded" %>
+          </div>
+        <% end %>
         <b><%= post.title %></b> posted <%= time_ago_in_words(post.created_at) %> ago
         <br>
         <%= post.get_likes.size %>

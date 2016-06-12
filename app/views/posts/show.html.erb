@@ -7,6 +7,11 @@
     <%= link_to tag.name, tag_path(tag) %>
   <% end %>
   </p>
+  <p>
+    <% if @post.image.exists? %>
+        <%= image_tag @post.image.url(:medium), class: "img-rounded" %><br/>
+    <% end %>
+  </p>
 
   <div>
     <%= @post.body %>
